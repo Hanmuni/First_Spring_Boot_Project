@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  todo-database-postgres:
+    image: postgres:latest
+    container_name: todo-database-postgres
+    ports:
+      - 5432:5432
+    environment:
+      TZ: Europe/Berlin
+      POSTGRES_USER: todo-user
+      POSTGRES_PASSWORD: todo-password
+      POSTGRES_DB: todo
+    restart: always
