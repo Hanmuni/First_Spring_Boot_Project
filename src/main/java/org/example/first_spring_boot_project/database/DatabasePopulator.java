@@ -26,12 +26,5 @@ public class DatabasePopulator implements CommandLineRunner {
 
         toDoRepository.saveAll(Arrays.asList(toDo1, toDo2, toDo3));
 
-        // Anzahl der erledigten Todos
-        long completedCount = toDoRepository.countAllByCompletedIsTrue();
-        System.out.println("Completed ToDos: " + completedCount);
-
-        // Anzahl der offenen Todos
-        long openCount = toDoRepository.countAllByCompletedIsFalse();
-        System.out.println("Open ToDos: " + openCount);
     }
 }
