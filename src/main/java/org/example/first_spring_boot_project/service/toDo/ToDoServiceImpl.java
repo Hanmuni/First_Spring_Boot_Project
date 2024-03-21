@@ -1,4 +1,4 @@
-package org.example.first_spring_boot_project.service;
+package org.example.first_spring_boot_project.service.toDo;
 
 
 import jakarta.persistence.EntityNotFoundException;
@@ -34,7 +34,7 @@ public class ToDoServiceImpl implements ToDoService {
 
     @Override
     public ToDo getToDoById(Long id) {
-        return toDoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("ToDo with the id " + id + " could not be found"));
+        return toDoRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("ToDo with the id " + id + " could not be found!"));
     }
 
     @Override

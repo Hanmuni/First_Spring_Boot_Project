@@ -1,7 +1,6 @@
-package org.example.first_spring_boot_project.service;
+package org.example.first_spring_boot_project.service.toDo;
 
 import org.example.first_spring_boot_project.entity.ToDo;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
