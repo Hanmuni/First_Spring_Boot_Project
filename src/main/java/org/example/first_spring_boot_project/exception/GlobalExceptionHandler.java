@@ -2,9 +2,7 @@ package org.example.first_spring_boot_project.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.java.Log;
-import org.example.first_spring_boot_project.service.toDo.translation.TranslationService;
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
+import org.example.first_spring_boot_project.service.translation.TranslationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

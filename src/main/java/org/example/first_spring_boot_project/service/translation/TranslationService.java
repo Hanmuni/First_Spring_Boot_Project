@@ -1,4 +1,4 @@
-package org.example.first_spring_boot_project.service.toDo.translation;
+package org.example.first_spring_boot_project.service.translation;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.MessageSource;
