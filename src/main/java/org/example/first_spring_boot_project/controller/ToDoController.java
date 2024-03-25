@@ -10,6 +10,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,17 +35,20 @@ public class ToDoController {
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('TODO_UPDATE')")
     public ResponseEntity<ToDo> updateToDo(@Valid @RequestBody ToDoUpdateDTO toDoUpdateDTO) {
         return new ResponseEntity<>(toDoService.updateToDo(modelMapper.map(toDoUpdateDTO, ToDo.class)), HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('TODO_DELETE')")
     public ResponseEntity<Void> removeToDo(@PathVariable Long id) {
         toDoService.removeToDo(id);
-        return new ResponseEntity<>(HttpStatus.GONE);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('TODO_READ_ALL')")
     public List<ToDo> getToDo() {
         return toDoService.getToDo();
     }
@@ -54,11 +59,13 @@ public class ToDoController {
     }
 
     @GetMapping(value = "/completed", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('TODO_READ_COUNT_DONE')")
     public ResponseEntity<List<ToDo>> getCompletedToDos() {
         return new ResponseEntity<>(toDoService.getCompletedToDos(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/open", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PreAuthorize("hasRole('TODO_READ_COUNT_OPEN')")
     public ResponseEntity<List<ToDo>> getOpenToDos() {
         return new ResponseEntity<>(toDoService.getOpenToDos(), HttpStatus.OK);
     }
